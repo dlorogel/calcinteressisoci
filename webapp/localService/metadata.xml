@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="API_JOURNALENTRYITEMBASIC_SRV" xml:lang="it" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="A_CompanyCodeType" sap:label="Dati società" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Società"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Nome della ditta" sap:quickinfo="Definizione della società o della ditta"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="Località"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Codice paese"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Divisa" sap:quickinfo="Chiave divisa" sap:semantics="currency-code"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Chiave lingua"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Piano dei conti"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Variante esercizio"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Società G/L"/>
+                <Property Name="CreditControlArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Area contr. credito" sap:quickinfo="Area controllo credito"/>
+                <Property Name="CountryChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Piano dei conti naz." sap:quickinfo="Piano dei piani secondo la legislazione del paese"/>
+                <Property Name="FinancialManagementArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Area finanziaria"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Indirizzo"/>
+                <Property Name="TaxableEntity" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Gruppo IVA"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Partita IVA" sap:quickinfo="Partita IVA comunitaria"/>
+                <Property Name="ExtendedWhldgTaxIsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ritenuta acc. ampl." sap:quickinfo="Codice: esecuzione ampliata calcolo ritenuta acconto attiva"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling area"/>
+                <Property Name="FieldStatusVariant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Variante stato campo"/>
+                <Property Name="NonTaxableTransactionTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Cod. IVA vend." sap:quickinfo="Codice IVA proc. non impon. di IVA IVA vendite"/>
+                <Property Name="DocDateIsUsedForTaxDetn" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Det. imposte con data d." sap:quickinfo="Codice: data documento come base per ind. imposte"/>
+                <Property Name="TaxRptgDateIsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Data fiscale" sap:quickinfo="Data di dichiarazione fiscale attiva nei documenti"/>
+            </EntityType>
+            <EntityType Name="A_CostCenterType" sap:label="Dati centro di costo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ControllingArea"/>
+                    <PropertyRef Name="CostCenter"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling area"/>
+                <Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="CdC" sap:quickinfo="Centro di costo"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Fine validità" sap:quickinfo="Data di fine validità"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inizio validità" sap:quickinfo="Data inizio validità"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Società"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Settore contabile"/>
+                <Property Name="CostCtrResponsiblePersonName" Type="Edm.String" MaxLength="20" sap:label="Responsabile"/>
+                <Property Name="CostCtrResponsibleUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Utente resp." sap:quickinfo="Utente responsabile"/>
+                <Property Name="CostCenterCurrency" Type="Edm.String" MaxLength="5" sap:label="Divisa" sap:quickinfo="Chiave divisa" sap:semantics="currency-code"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit center"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="12" sap:label="Reparto"/>
+                <Property Name="CostingSheet" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Schema CCST"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Area funzionale"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Codice paese"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Regione" sap:quickinfo="Regione (stato federale, stato federato, provincia, contea)"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="Località"/>
+                <Property Name="CostCenterStandardHierArea" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Area gerarchia" sap:quickinfo="Area gerarchia standard"/>
+                <Property Name="CostCenterCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tipo CdC" sap:quickinfo="Tipo di centro di costo"/>
+                <Property Name="IsBlkdForPrimaryCostsPosting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Cst. primari eff." sap:quickinfo="Codice di blocco delle registrazioni eff. primarie"/>
+                <Property Name="IsBlkdForSecondaryCostsPosting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Bl.cst.sec.eff." sap:quickinfo="Codice di blocco delle registrazioni eff. secondarie"/>
+                <Property Name="IsBlockedForRevenuePosting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ricavi eff." sap:quickinfo="Codice di blocco delle registrazioni eff. ricavi"/>
+                <Property Name="IsBlockedForCommitmentPosting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Agg. impegni finanz." sap:quickinfo="Codice di blocco per agg. impegni finanziari"/>
+                <Property Name="IsBlockedForPlanPrimaryCosts" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Costi primari pian." sap:quickinfo="Codice di blocco della pianificazione dei costi primari"/>
+                <Property Name="IsBlockedForPlanSecondaryCosts" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Bl. costi sec. pian." sap:quickinfo="Indicatore di blocco per costi secondari pianificati"/>
+                <Property Name="IsBlockedForPlanRevenues" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Blocco ricavi pian." sap:quickinfo="Indicatore di blocco per ricavi pianificati"/>
+                <Property Name="ConsumptionQtyIsRecorded" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Gestire quantità" sap:quickinfo="Codice di gestione per quantità di consumo"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Chiave lingua"/>
+                <Property Name="CostCenterCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Creato da" sap:quickinfo="Nome autore acquisizione"/>
+                <Property Name="CostCenterCreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Acquisito il" sap:quickinfo="Data di acquisizione"/>
+            </EntityType>
+            <EntityType Name="A_GLAccountInChartOfAccountsType" sap:label="Conti Co.Ge. in dati relativi a piani dei conti" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ChartOfAccounts"/>
+                    <PropertyRef Name="GLAccount"/>
+                </Key>
+                <Property Name="ChartOfAccounts" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Piano dei conti"/>
+                <Property Name="GLAccount" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Conto Co.Ge." sap:quickinfo="Numero del conto Co.Ge."/>
+                <Property Name="IsBalanceSheetAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Conto di bil. patr." sap:quickinfo="Conto: il conto è un conto di bilancio patrimoniale?"/>
+                <Property Name="GLAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Gruppo conti" sap:quickinfo="Gruppo conti Co.Ge."/>
+                <Property Name="CorporateGroupAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Numero conto gruppo"/>
+                <Property Name="ProfitLossAccountType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tipo conto ec." sap:quickinfo="Tipo conto economico"/>
+                <Property Name="SampleGLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Conto campione" sap:quickinfo="Nome del conto campione"/>
+                <Property Name="AccountIsMarkedForDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Indic. di canc." sap:quickinfo="Indicatore: il conto è contrassegnato per la cancellazione ?"/>
+                <Property Name="AccountIsBlockedForCreation" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Blocco ins." sap:quickinfo="Codice: il conto è bloccato per l'inserimento?"/>
+                <Property Name="AccountIsBlockedForPosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Blocco registr." sap:quickinfo="Indicatore: il conto è bloccato per la registrazione?"/>
+                <Property Name="AccountIsBlockedForPlanning" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Blocco pianif." sap:quickinfo="Indicatore: conto bloccato per pianficazione?"/>
+                <Property Name="PartnerCompany" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="N. società partner"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Area funzionale"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data creazione" sap:quickinfo="Data di inserimento record"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Creato da" sap:quickinfo="Nome dell'utente che ha inserito l'oggetto"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Timestamp" sap:quickinfo="Timestamp UTC in forma breve (AAAAMMGGhhmmss)"/>
+                <Property Name="GLAccountType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tp. di conto Co.Ge." sap:quickinfo="Tipo di conto Co.Ge."/>
+                <Property Name="GLAccountExternal" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="ID est. cto Co.Ge." sap:quickinfo="Numero di conto Co.Ge."/>
+                <Property Name="IsProfitLossAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Conto di bil. patr." sap:quickinfo="Conto: il conto è un conto di bilancio patrimoniale?"/>
+            </EntityType>
+            <EntityType Name="A_JournalEntryItemBasicType" sap:semantics="aggregate" sap:label="Dati base pos. doc. contabile" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ledger" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="LedgerName" sap:label="Ledger" sap:quickinfo="Ledger in contabilità generale"/>
+                <Property Name="LedgerName" Type="Edm.String" MaxLength="30" sap:label="Definizione ledger"/>
+                <Property Name="LedgerFiscalYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Esercizio del ledger"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ControllingAreaName" sap:label="Controlling area"/>
+                <Property Name="ControllingAreaName" Type="Edm.String" MaxLength="25" sap:label="Nome area CO" sap:quickinfo="Nome controlling area"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Società"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Nome società"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="GLAccountName" sap:label="Conto Co.Ge."/>
+                <Property Name="GLAccountName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nome conto Co.Ge."/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CostCenterName" sap:label="Centro di costo"/>
+                <Property Name="CostCenterName" Type="Edm.String" MaxLength="20" sap:label="Nome centro di costo" sap:quickinfo="Nome del centro di costo"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ProfitCenterName" sap:label="Profit center"/>
+                <Property Name="ProfitCenterName" Type="Edm.String" MaxLength="20" sap:label="Nome centro profitto" sap:quickinfo="Descrizione del profit center"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="FunctionalAreaName" sap:label="Area funzionale"/>
+                <Property Name="FunctionalAreaName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nome area funzionale" sap:quickinfo="Nome dell'area funzionale"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="BusinessAreaName" sap:label="Settore contabile"/>
+                <Property Name="BusinessAreaName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nome settore cont." sap:quickinfo="Nome del settore contabile"/>
+                <Property Name="Segment" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SegmentName" sap:label="Segmento" sap:quickinfo="Segmento per procedura di reporting segmento"/>
+                <Property Name="SegmentName" Type="Edm.String" MaxLength="50" sap:label="Nome segmento"/>
+                <Property Name="PartnerCostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerCostCenterName" sap:label="CentroCostoPartner" sap:quickinfo="Centro di costo partner"/>
+                <Property Name="PartnerCostCenterName" Type="Edm.String" MaxLength="20" sap:label="NmCntrDiCs" sap:quickinfo="Nome centro di costo partner"/>
+                <Property Name="PartnerProfitCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerProfitCenterName" sap:label="Prof. cent. partner" sap:quickinfo="Profit center del partner"/>
+                <Property Name="PartnerProfitCenterName" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Nm.profit cent.part." sap:quickinfo="Nome profit center del partner"/>
+                <Property Name="PartnerFunctionalArea" Type="Edm.String" MaxLength="16" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerFunctionalAreaName" sap:label="Area funz. partner" sap:quickinfo="Area funzionale del partner"/>
+                <Property Name="PartnerFunctionalAreaName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nm.area funz.partner" sap:quickinfo="Nome area funzionale del partner"/>
+                <Property Name="PartnerBusinessArea" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerBusinessAreaName" sap:label="Sett. cont. partner" sap:quickinfo="Settore contabile partner"/>
+                <Property Name="PartnerBusinessAreaName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nme sett.cont.soc.p." sap:quickinfo="Nome del settore contabile società partner"/>
+                <Property Name="PartnerCompany" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerCompanyName" sap:label="Società partner" sap:quickinfo="ID società della società partner"/>
+                <Property Name="PartnerCompanyName" Type="Edm.String" MaxLength="30" sap:label="Nome società"/>
+                <Property Name="PartnerSegment" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerSegmentName" sap:label="Segmento partner" sap:quickinfo="Segmento partner per procedura di reporting segmento"/>
+                <Property Name="PartnerSegmentName" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Nome segm. partner" sap:quickinfo="Nome segmento partner"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Divisa transazione" sap:semantics="currency-code"/>
+                <Property Name="AmountInTransactionCurrency" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="TransactionCurrency" sap:label="Importo in DT" sap:quickinfo="Importo in divisa transazione" sap:filterable="false"/>
+                <Property Name="CompanyCodeCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Divisa società" sap:semantics="currency-code"/>
+                <Property Name="AmountInCompanyCodeCurrency" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="CompanyCodeCurrency" sap:label="Importo in div. soc." sap:quickinfo="Importo in divisa società" sap:filterable="false"/>
+                <Property Name="GlobalCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Divisa globale" sap:semantics="currency-code"/>
+                <Property Name="AmountInGlobalCurrency" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="GlobalCurrency" sap:label="Imp. in div. globale" sap:quickinfo="Importo in divisa globale" sap:filterable="false"/>
+                <Property Name="CostSourceUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Utà dell'orig. costi" sap:quickinfo="Unità dell'origine costi" sap:semantics="unit-of-measure"/>
+                <Property Name="ValuationQuantity" Type="Edm.Decimal" Precision="23" Scale="3" sap:aggregation-role="measure" sap:unit="CostSourceUnit" sap:label="Q.tà di valutazione" sap:quickinfo="Quantità di valutazione" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency1" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 1" sap:quickinfo="Divisa definita liberamente 1" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency1" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency1" sap:label="Imp. div. def.lib. 1" sap:quickinfo="Importo in divisa definita liberamente 1" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency2" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. liber. 2" sap:quickinfo="Divisa definita liberamente 2" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency2" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency2" sap:label="Imp. div. def. lib.2" sap:quickinfo="Importo in divisa liberamente definita 2" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency3" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 3" sap:quickinfo="Divisa liberamente definita 3" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency3" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency3" sap:label="Importo in DDL 3" sap:quickinfo="Importo in divisa liberamente definita 3" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency4" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 4" sap:quickinfo="Divisa definita liberamente 4" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency4" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency4" sap:label="Imp. in DvsLbrDfnt 4" sap:quickinfo="Importo in divisa liberamente definita 4" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency5" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 5" sap:quickinfo="Divisa definita liberamente 5" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency5" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency5" sap:label="Importo in DDL 5" sap:quickinfo="Importo in divisa liberamente definita 5" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency6" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 6" sap:quickinfo="Divisa definita liberamente 6" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency6" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency6" sap:label="Imp. in DvsLbrDfnt 6" sap:quickinfo="Importo in divisa liberamente definita 6" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency7" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. lib. def. 7" sap:quickinfo="Divisa liberamente definita 7" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency7" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency7" sap:label="Importo in DDL 7" sap:quickinfo="Importo in divisa liberamente definita 7" sap:filterable="false"/>
+                <Property Name="FreeDefinedCurrency8" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Div. def. lib. 8" sap:quickinfo="Divisa definita liberamente 8" sap:semantics="currency-code"/>
+                <Property Name="AmountInFreeDefinedCurrency8" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="FreeDefinedCurrency8" sap:label="Imp. in DvsLbrDfnt 8" sap:quickinfo="Importo in divisa liberamente definita 8" sap:filterable="false"/>
+                <Property Name="BaseUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unità misura base" sap:quickinfo="Unità di misura di base" sap:semantics="unit-of-measure"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="23" Scale="3" sap:aggregation-role="measure" sap:unit="BaseUnit" sap:label="Quantità" sap:filterable="false"/>
+                <Property Name="AdditionalQuantity1Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="UdM supplem. 1" sap:quickinfo="Unità di misura supplementare 1" sap:semantics="unit-of-measure"/>
+                <Property Name="AdditionalQuantity1" Type="Edm.Decimal" Precision="23" Scale="3" sap:aggregation-role="measure" sap:unit="AdditionalQuantity1Unit" sap:label="Qtà. suppl. 1" sap:quickinfo="Quantità supplementare 1" sap:filterable="false"/>
+                <Property Name="AdditionalQuantity2Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unità mis. suppl. 2" sap:quickinfo="Unità di misura supplementare 2" sap:semantics="unit-of-measure"/>
+                <Property Name="AdditionalQuantity2" Type="Edm.Decimal" Precision="23" Scale="3" sap:aggregation-role="measure" sap:unit="AdditionalQuantity2Unit" sap:label="Qtà. suppl. 2" sap:quickinfo="Quantità supplementare 2" sap:filterable="false"/>
+                <Property Name="AdditionalQuantity3Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="UdM supplementare 3" sap:quickinfo="Unità di misura supplementare 3" sap:semantics="unit-of-measure"/>
+                <Property Name="AdditionalQuantity3" Type="Edm.Decimal" Precision="23" Scale="3" sap:aggregation-role="measure" sap:unit="AdditionalQuantity3Unit" sap:label="Qtà. suppl. 3" sap:quickinfo="Quantità supplementare 3" sap:filterable="false"/>
+                <Property Name="FiscalPeriod" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Periodo contabile"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Variante d'esercizio"/>
+                <Property Name="FiscalYearPeriod" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Periodo esercizio" sap:quickinfo="Periodo dell'esercizio"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Piano dei conti"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Divisione"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Nome della divisione"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Cliente" sap:quickinfo="Codice cliente"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Nome del cliente"/>
+                <Property Name="ControllingDebitCreditCode" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Indicat. add/acc CO" sap:quickinfo="Indicatore addebito/accredito CO"/>
+                <Property Name="Project" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ProjectDescription" sap:label="Progetto"/>
+                <Property Name="ProjectDescription" Type="Edm.String" MaxLength="40" sap:label="Descrizione progetto"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="WBSElementDescription" sap:label="Elemento WBS"/>
+                <Property Name="WBSElementDescription" Type="Edm.String" MaxLength="40" sap:label="Nome elemento WBS"/>
+                <Property Name="PartnerCompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerCompanyCodeName" sap:label="Società partner" sap:quickinfo="Società del partner"/>
+                <Property Name="PartnerCompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Nome società partner"/>
+                <Property Name="CostCtrActivityType" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CostCtrActivityTypeName" sap:label="Tipo di attività"/>
+                <Property Name="CostCtrActivityTypeName" Type="Edm.String" MaxLength="60" sap:label="Nome tipo attività" sap:quickinfo="Nome del tipo di attività"/>
+                <Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="ID ordine"/>
+                <Property Name="PartnerOrder" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Ordine partner"/>
+                <Property Name="PartnerCostCtrActivityType" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerCostCtrActivityTypeName" sap:label="TpAttiv. CdC partner" sap:quickinfo="Tipo di attività centro di costo del partner"/>
+                <Property Name="PartnerCostCtrActivityTypeName" Type="Edm.String" MaxLength="60" sap:label="Nome TipoAtt partner" sap:quickinfo="Nome tipo di attività partner"/>
+                <Property Name="PartnerProject" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerProjectDescription" sap:label="Progetto partner"/>
+                <Property Name="PartnerProjectDescription" Type="Edm.String" MaxLength="40" sap:label="Descr. prog. partner" sap:quickinfo="Descrizione progetto partner (1° riga di testo)"/>
+                <Property Name="PartnerWBSElement" Type="Edm.String" MaxLength="24" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="PartnerWBSElementDescription" sap:label="Elemento WBS del partner"/>
+                <Property Name="PartnerWBSElementDescription" Type="Edm.String" MaxLength="40" sap:label="Descr. WBS" sap:quickinfo="Descrizione elemento WBS partner"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SalesOrganizationName" sap:label="Org. commerciale" sap:quickinfo="Organizzazione commerciale"/>
+                <Property Name="SalesOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Nome org. comm" sap:quickinfo="Nome organizzazione commerciale"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="DistributionChannelName" sap:label="Canale distribuzione" sap:quickinfo="Canale di distribuzione"/>
+                <Property Name="DistributionChannelName" Type="Edm.String" MaxLength="20" sap:label="Nome canale distr." sap:quickinfo="Nome canale di distribuzione"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="DivisionName" sap:label="Settore merceologico"/>
+                <Property Name="DivisionName" Type="Edm.String" MaxLength="30" sap:label="Nome del settore"/>
+                <Property Name="SoldMaterial" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SoldMaterialName" sap:label="Materiale venduto"/>
+                <Property Name="SoldMaterialName" Type="Edm.String" MaxLength="40" sap:label="Nome mater. venduto" sap:quickinfo="Nome materiale venduto"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="MaterialGroupName" sap:label="Gruppo prod. venduti" sap:quickinfo="Gruppo prodotti venduti"/>
+                <Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20" sap:label="Descr. gruppo prod." sap:quickinfo="Descrizione gruppo prodotti"/>
+                <Property Name="CustomerGroup" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CustomerGroupName" sap:label="Gruppo clienti"/>
+                <Property Name="CustomerGroupName" Type="Edm.String" MaxLength="30" sap:label="Nome gruppo clienti" sap:quickinfo="Nome gruppo di clienti"/>
+                <Property Name="CustomerSupplierCountry" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CustomerSupplierCountryName" sap:label="Paese" sap:quickinfo="Codice paese"/>
+                <Property Name="CustomerSupplierCountryName" Type="Edm.String" MaxLength="50" sap:label="Denominazione paese" sap:quickinfo="Denominazine del paese (max. 50 posizioni)"/>
+                <Property Name="CustomerSupplierIndustry" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CustomerSupplierIndustryName" sap:label="S. ind." sap:quickinfo="Chiave settore industriale"/>
+                <Property Name="CustomerSupplierIndustryName" Type="Edm.String" MaxLength="20" sap:label="Chiave settore" sap:quickinfo="Significato della chiave settore"/>
+                <Property Name="SalesDistrict" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SalesDistrictName" sap:label="Zona distr." sap:quickinfo="Zona distribuzione cliente"/>
+                <Property Name="SalesDistrictName" Type="Edm.String" MaxLength="20" sap:label="Denominaz. territ." sap:quickinfo="Denominazione dell'ente territoriale (provincia, regione..)"/>
+                <Property Name="ZZ1_TestAndrea_JEI" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="TestAndrea" sap:is-extension-field="true"/>
+                <NavigationProperty Name="to_CompanyCode" Relationship="API_JOURNALENTRYITEMBASIC_SRV.assoc_2235259595AE79D56F99B06E1CECF37B" FromRole="FromRole_assoc_2235259595AE79D56F99B06E1CECF37B" ToRole="ToRole_assoc_2235259595AE79D56F99B06E1CECF37B"/>
+                <NavigationProperty Name="to_CurrentCostCenter" Relationship="API_JOURNALENTRYITEMBASIC_SRV.assoc_3EFF25981B4A321BA4651B6C3630BBB7" FromRole="FromRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7" ToRole="ToRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7"/>
+                <NavigationProperty Name="to_CurrentProfitCenter" Relationship="API_JOURNALENTRYITEMBASIC_SRV.assoc_0E741736759C75E86CE54617E54CC048" FromRole="FromRole_assoc_0E741736759C75E86CE54617E54CC048" ToRole="ToRole_assoc_0E741736759C75E86CE54617E54CC048"/>
+                <NavigationProperty Name="to_GLAccountInChartOfAccounts" Relationship="API_JOURNALENTRYITEMBASIC_SRV.assoc_ECC6DCA28D41E324554E43842CFE2974" FromRole="FromRole_assoc_ECC6DCA28D41E324554E43842CFE2974" ToRole="ToRole_assoc_ECC6DCA28D41E324554E43842CFE2974"/>
+            </EntityType>
+            <EntityType Name="A_ProfitCenterType" sap:label="Dati profit center" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ControllingArea"/>
+                    <PropertyRef Name="ProfitCenter"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling area"/>
+                <Property Name="ProfitCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit center"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Fine validità" sap:quickinfo="Data di fine validità"/>
+                <Property Name="ProfitCtrResponsiblePersonName" Type="Edm.String" MaxLength="20" sap:label="Responsabile PC" sap:quickinfo="Responsabile del Profit center"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Società"/>
+                <Property Name="ProfitCtrResponsibleUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Utente resp." sap:quickinfo="Utente responsabile del profit centre"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inizio validità" sap:quickinfo="Data inizio validità"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="12" sap:label="Reparto"/>
+                <Property Name="ProfitCenterStandardHierarchy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Area gerarchia" sap:quickinfo="Area profit center"/>
+                <Property Name="Segment" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Segmento" sap:quickinfo="Segmento per procedura di reporting segmento"/>
+                <Property Name="ProfitCenterIsBlocked" Type="Edm.String" MaxLength="1" sap:label="Codice di blocco"/>
+                <Property Name="FormulaPlanningTemplate" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Template pian. form." sap:quickinfo="Template per pianificazione formula in profit center"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="15" sap:label="Intestazione"/>
+                <Property Name="AddressName" Type="Edm.String" MaxLength="35" sap:label="Nome" sap:quickinfo="Nome 1"/>
+                <Property Name="AdditionalName" Type="Edm.String" MaxLength="35" sap:label="Nome 2"/>
+                <Property Name="ProfitCenterAddrName3" Type="Edm.String" MaxLength="35" sap:label="Nome 3"/>
+                <Property Name="ProfitCenterAddrName4" Type="Edm.String" MaxLength="35" sap:label="Nome 4"/>
+                <Property Name="StreetAddressName" Type="Edm.String" MaxLength="35" sap:label="Via" sap:quickinfo="Via e numero civico"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Casella postale"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="Località"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="CAP" sap:quickinfo="Codice di avviamento postale"/>
+                <Property Name="District" Type="Edm.String" MaxLength="35" sap:label="Frazione"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Codice paese"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Regione" sap:quickinfo="Regione (stato federale, stato federato, provincia, contea)"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Sede fiscale"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Chiave lingua"/>
+                <Property Name="PhoneNumber1" Type="Edm.String" MaxLength="16" sap:label="Telefono 1" sap:quickinfo="1° numero di tel."/>
+                <Property Name="PhoneNumber2" Type="Edm.String" MaxLength="16" sap:label="Telefono 2" sap:quickinfo="2° numero di tel."/>
+                <Property Name="TeleboxNumber" Type="Edm.String" MaxLength="15" sap:label="Numero telebox"/>
+                <Property Name="TelexNumber" Type="Edm.String" MaxLength="30" sap:label="N. telex"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Numero di telefax"/>
+                <Property Name="DataCommunicationPhoneNumber" Type="Edm.String" MaxLength="14" sap:label="Linea dati" sap:quickinfo="Numero della linea dati"/>
+                <Property Name="ProfitCenterPrinterName" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Nome stampante" sap:quickinfo="Nome stampante per profit center"/>
+                <Property Name="ProfitCenterCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Creato da" sap:quickinfo="Nome autore acquisizione"/>
+                <Property Name="ProfitCenterCreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Acquisito il" sap:quickinfo="Data di acquisizione"/>
+            </EntityType>
+            <Association Name="assoc_3EFF25981B4A321BA4651B6C3630BBB7" sap:content-version="1">
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_JournalEntryItemBasicType" Multiplicity="1" Role="FromRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7"/>
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_CostCenterType" Multiplicity="0..1" Role="ToRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7"/>
+            </Association>
+            <Association Name="assoc_0E741736759C75E86CE54617E54CC048" sap:content-version="1">
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_JournalEntryItemBasicType" Multiplicity="1" Role="FromRole_assoc_0E741736759C75E86CE54617E54CC048"/>
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_ProfitCenterType" Multiplicity="0..1" Role="ToRole_assoc_0E741736759C75E86CE54617E54CC048"/>
+            </Association>
+            <Association Name="assoc_ECC6DCA28D41E324554E43842CFE2974" sap:content-version="1">
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_JournalEntryItemBasicType" Multiplicity="1" Role="FromRole_assoc_ECC6DCA28D41E324554E43842CFE2974"/>
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_GLAccountInChartOfAccountsType" Multiplicity="0..1" Role="ToRole_assoc_ECC6DCA28D41E324554E43842CFE2974"/>
+            </Association>
+            <Association Name="assoc_2235259595AE79D56F99B06E1CECF37B" sap:content-version="1">
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_JournalEntryItemBasicType" Multiplicity="1" Role="FromRole_assoc_2235259595AE79D56F99B06E1CECF37B"/>
+                <End Type="API_JOURNALENTRYITEMBASIC_SRV.A_CompanyCodeType" Multiplicity="1" Role="ToRole_assoc_2235259595AE79D56F99B06E1CECF37B"/>
+            </Association>
+            <EntityContainer Name="API_JOURNALENTRYITEMBASIC_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="A_CompanyCode" EntityType="API_JOURNALENTRYITEMBASIC_SRV.A_CompanyCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CostCenter" EntityType="API_JOURNALENTRYITEMBASIC_SRV.A_CostCenterType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_GLAccountInChartOfAccounts" EntityType="API_JOURNALENTRYITEMBASIC_SRV.A_GLAccountInChartOfAccountsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_JournalEntryItemBasic" EntityType="API_JOURNALENTRYITEMBASIC_SRV.A_JournalEntryItemBasicType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_ProfitCenter" EntityType="API_JOURNALENTRYITEMBASIC_SRV.A_ProfitCenterType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_3EFF25981B4A321BA4651B6C3630BBB7" Association="API_JOURNALENTRYITEMBASIC_SRV.assoc_3EFF25981B4A321BA4651B6C3630BBB7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_JournalEntryItemBasic" Role="FromRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7"/>
+                    <End EntitySet="A_CostCenter" Role="ToRole_assoc_3EFF25981B4A321BA4651B6C3630BBB7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_ECC6DCA28D41E324554E43842CFE2974" Association="API_JOURNALENTRYITEMBASIC_SRV.assoc_ECC6DCA28D41E324554E43842CFE2974" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_JournalEntryItemBasic" Role="FromRole_assoc_ECC6DCA28D41E324554E43842CFE2974"/>
+                    <End EntitySet="A_GLAccountInChartOfAccounts" Role="ToRole_assoc_ECC6DCA28D41E324554E43842CFE2974"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0E741736759C75E86CE54617E54CC048" Association="API_JOURNALENTRYITEMBASIC_SRV.assoc_0E741736759C75E86CE54617E54CC048" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_JournalEntryItemBasic" Role="FromRole_assoc_0E741736759C75E86CE54617E54CC048"/>
+                    <End EntitySet="A_ProfitCenter" Role="ToRole_assoc_0E741736759C75E86CE54617E54CC048"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2235259595AE79D56F99B06E1CECF37B" Association="API_JOURNALENTRYITEMBASIC_SRV.assoc_2235259595AE79D56F99B06E1CECF37B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_JournalEntryItemBasic" Role="FromRole_assoc_2235259595AE79D56F99B06E1CECF37B"/>
+                    <End EntitySet="A_CompanyCode" Role="ToRole_assoc_2235259595AE79D56F99B06E1CECF37B"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_JournalEntryItemBasic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>AmountInTransactionCurrency</PropertyPath>
+                                <PropertyPath>AmountInCompanyCodeCurrency</PropertyPath>
+                                <PropertyPath>AmountInGlobalCurrency</PropertyPath>
+                                <PropertyPath>ValuationQuantity</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency1</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency2</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency3</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency4</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency5</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency6</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency7</PropertyPath>
+                                <PropertyPath>AmountInFreeDefinedCurrency8</PropertyPath>
+                                <PropertyPath>Quantity</PropertyPath>
+                                <PropertyPath>AdditionalQuantity1</PropertyPath>
+                                <PropertyPath>AdditionalQuantity2</PropertyPath>
+                                <PropertyPath>AdditionalQuantity3</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.BatchSupported" Bool="false"/>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_JournalEntryItemBasic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads universal journal entry items."/>
+                        <PropertyValue Property="LongDescription" String="Reads the universal journal entry items available in your system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a universal journal entry item by key."/>
+                                <PropertyValue Property="LongDescription" String="Reads a selected universal journal entry item for the provided key."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the items of all company codes."/>
+                        <PropertyValue Property="LongDescription" String="Reads the company codes available in your system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a company code by key."/>
+                                <PropertyValue Property="LongDescription" String="Reads a selected company code for the provided company code key."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_CostCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the items of all cost centers."/>
+                        <PropertyValue Property="LongDescription" String="Reads the cost centers available in your system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a cost center by key."/>
+                                <PropertyValue Property="LongDescription" String="Reads a selected cost center for the provided key."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_ProfitCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the items of all profit centers."/>
+                        <PropertyValue Property="LongDescription" String="Reads the profit centers available in your system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a profit center by key."/>
+                                <PropertyValue Property="LongDescription" String="Reads a selected profit center for the provided key."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_GLAccountInChartOfAccounts" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the items of all chart of accounts."/>
+                        <PropertyValue Property="LongDescription" String="Reads the chart of accounts available in your system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a chart of account by key."/>
+                                <PropertyValue Property="LongDescription" String="Reads a selected chart of account for the provided key."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_JOURNALENTRYITEMBASIC_SRV.API_JOURNALENTRYITEMBASIC_SRV_Entities/A_JournalEntryItemBasic" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CompanyCode"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the company code data of a specific universal entry item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the data of the company code of a specific universal entry item."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CurrentCostCenter"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the current cost center data of a specific universal entry item"/>
+                                            <PropertyValue Property="LongDescription" String="Reads the master data of the current cost center of a specific universal entry item."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CurrentProfitCenter"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the current profit center data of a specific universal entry item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the master data of the current profit center of a specific universal entry item."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GLAccountInChartOfAccounts"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the chart of accounts data of a specific universal entry item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the data of the chart of accounts of a specific universal entry item."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://orogeldev:44333/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://orogeldev:44333/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,57 @@
+<mvc:View controllerName="it.orogel.calcinteressisoci.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+    xmlns:o="sap.ui.layout.form"
+    xmlns="sap.m">
+
+    <o:SimpleForm id="_IDGenSimpleForm1" editable="true" title="{i18n>insertValues}" layout="ResponsiveLayout" singleContainerFullSize="false" visible="true">
+
+        <o:content>
+
+            <Label id="_IDGenLabel1" text="{i18n>BUKRS}" required="true"/>
+            <Input id="_IDGenInput1" width="50%" value="{inputModel>/BUKRS_text}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest"/>
+
+            <Label id="_IDGenLabel3" text="{i18n>KUNNR}" required="true"/>
+            <Input id="_IDGenInput2" width="50%" value="{inputModel>/KUNNR}" type="Number"/>
+
+            <Label id="_IDGenLabel21" text="{i18n>ZZ_DATA_DA}" required="true"/>
+            <DatePicker id="_IDGenDatePicker11" width="50%" value="{inputModel>/ZZ_DATA_DA}" displayFormat="dd.MM.yyyy" valueFormat="YYYY-MM-dd"/>
+
+            <Label id="_IDGenLabel2" text="{i18n>ZZ_DATA_A}" required="true"/>
+            <DatePicker id="_IDGenDatePicker1" width="50%" value="{inputModel>/ZZ_DATA_A}" displayFormat="dd.MM.yyyy" valueFormat="YYYY-MM-dd"/>
+            <!--<Toolbar id="_IDGenToolbar1" visible="false"/>-->
+        </o:content>
+    </o:SimpleForm>
+    <o:SimpleForm id="_IDGenSimpleForm11" editable="true" layout="ResponsiveLayout" singleContainerFullSize="false" visible="true">
+        <o:content>
+     <!--<layout:HorizontalLayout id="_IDGenHorizontalLayout2" class="sapUiContentPadding">-->
+            <Label id="_IDGenLabel1001" text=""/>
+            <Button id="_IDGenButton1" width="50%" type="Emphasized" text="{i18n>calc}" press="getJournal"/>
+            <Label id="_IDGenLabel1002" text=""/>
+            <Button id="_IDGenButton11" width="50%" type="Emphasized" text="{i18n>tax}" press="onOpenTax"/>
+            <!--</layout:HorizontalLayout>-->
+
+        </o:content>
+    </o:SimpleForm>
+    <o:SimpleForm id="_IDGenSimpleForm111" editable="true" title="{i18n>res}" layout="ResponsiveLayout" singleContainerFullSize="false" visible="true">
+
+        <o:content>
+            <Label id="_IDGenLabel1000" text="{i18n>BUKRS}"/>
+            <Input id="_IDGenInput100" width="50%" value="{outputModel>/BUKRS}" editable="false"/>
+
+            <Label id="_IDGenLabel301" text="{i18n>BUTXT}"/>
+            <Input id="_IDGenInput201" width="50%" value="{outputModel>/BUTXT}" editable="false"/>
+
+            <Label id="_IDGenLabel101" text="{i18n>KUNNR}"/>
+            <Input id="_IDGenInput101" width="50%" value="{outputModel>/KUNNR}" editable="false"/>
+
+            <Label id="_IDGenLabel30" text="{i18n>NAME1}"/>
+            <Input id="_IDGenInput20" width="50%" value="{outputModel>/NAME1}" editable="false"/>
+
+            <Label id="_IDGenLabel10" text="{i18n>WRBTR}"/>
+            <Input id="_IDGenInput10" width="50%" value="{outputModel>/WRBTR}" editable="false" type="Number"/>
+
+        </o:content>
+    </o:SimpleForm>
+
+</mvc:View>
