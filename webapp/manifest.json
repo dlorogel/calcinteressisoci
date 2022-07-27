@@ -42,7 +42,7 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Calcolo interessi Soci",
+                    "semanticObject": "zinterestsoci",
                     "action": "display",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",

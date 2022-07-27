@@ -5,11 +5,12 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Filter, FilterOperator, MessageToast, Fragment, JSONModel) {
+    function (Controller, Filter, FilterOperator, MessageToast, Fragment, JSONModel, MessageBox) {
         "use strict";
 
         return Controller.extend("it.orogel.calcinteressisoci.controller.Home", {
@@ -17,13 +18,10 @@ sap.ui.define([
                 this.oGlobalBusyDialog = new sap.m.BusyDialog();
                 this.setInitialsModel();
             },
-            onCalculate: function () {
-
-            },
             onValueHelpRequest: async function (event, field, isFilter) {
 
                 var oView = this.getView();
-
+                this.oGlobalBusyDialog.open();
                 if (!this._pValueHelpDialog) {
                     this._pValueHelpDialog = Fragment.load({
                         id: oView.getId(),
@@ -50,7 +48,7 @@ sap.ui.define([
                 this.refresh("inputModel");
             },
             getCompanyCode: function (filters) {
-                this.oGlobalBusyDialog.open();
+
                 var model = this.getOwnerComponent().getModel("companyModel");
                 var that = this;
                 var arrRes = [];
@@ -76,8 +74,11 @@ sap.ui.define([
                 });
             },
             getJournal: function () {
-                this.oGlobalBusyDialog.open();
                 var input = this.getOwnerComponent().getModel("inputModel").getData()
+                if (this.checkMandatory(input)) {
+                    return;
+                };
+                this.oGlobalBusyDialog.open();
                 var tax = this.getOwnerComponent().getModel("taxModel").getData()
                 var model = this.getOwnerComponent().getModel();
                 var that = this;
@@ -91,7 +92,7 @@ sap.ui.define([
                 });
 
                 aFilter.push(new Filter("CompanyCode", sap.ui.model.FilterOperator.EQ, input.BUKRS));
-                //aFilter.push(new Filter("Customer", sap.ui.model.FilterOperator.EQ, filters.KUNNR));
+                aFilter.push(new Filter("Customer", sap.ui.model.FilterOperator.EQ, filters.KUNNR));
                 aFilter.push(new Filter("SpecialGLCode", sap.ui.model.FilterOperator.EQ, "1"));
                 aFilter.push(new Filter("ClearingAccountingDocument", sap.ui.model.FilterOperator.EQ, ""));
                 aFilter.push(new Filter("FiscalYear", sap.ui.model.FilterOperator.EQ, this.sYear));
@@ -116,7 +117,6 @@ sap.ui.define([
                             arrTable1.push(table1)
                         }
 
-                        var flag = false;
                         var lastdata = "";
                         for (let l = 0; l < tax.length; l++) {
                             for (let z = 0; z < arrTable1.length; z++) {
@@ -146,11 +146,11 @@ sap.ui.define([
                         var total = 0;
                         arrTable3.forEach(e => {
                             var table4 = { ZZ_DATA_DA: e.ZZ_DATA_DA, ZZ_DATA_A: e.ZZ_DATA_A, capitale: e.capitale, tassoInteresse: e.tassoInteresse, nDays: that.differenceDays(e.ZZ_DATA_DA, e.ZZ_DATA_A) }
-                            total += (e.capitale * e.tassoInteresse * that.differenceDays(e.ZZ_DATA_DA, e.ZZ_DATA_A) / 100) / 365;
+                            total += (e.capitale * e.tassoInteresse * that.differenceDays(e.ZZ_DATA_DA, e.ZZ_DATA_A) / 100) / that.differenceDays(that.sYear + '-01-01', that.sYear + '-12-31');
                             arrTable4.push(table4)
                         });
                         console.table(arrTable4)
-                       
+
                         var outputObject = { BUKRS: response.results[0].CompanyCode, BUTXT: response.results[0].CompanyCodeName, KUNNR: response.results[0].Customer, NAME1: response.results[0].CustomerName, WRBTR: total }
 
                         that.getOwnerComponent().getModel("outputModel").setData(outputObject);
@@ -193,6 +193,14 @@ sap.ui.define([
                 this._searchHelpEMPDialog.destroy();
                 this._searchHelpEMPDialog = null;
             },
+            onAddTaxRows: function () {
+                this.getOwnerComponent().getModel("taxModel").getData().push({ ZZ_DATA_DA: this.sYear + '-01-01', ZZ_DATA_A: this.sYear + '-01-01', ZZ_TASSO: 0 })
+                this.refresh("taxModel");
+            },
+            onDeleteTaxRows: function () {
+                this.getOwnerComponent().getModel("taxModel").getData().pop()
+                this.refresh("taxModel");
+            },
             setInitialsModel: function () {
                 let dToday = new Date()
                 this.sDay = String(dToday.getDate()).padStart(2, "0");
@@ -205,11 +213,49 @@ sap.ui.define([
                 var matchModel = this.getOwnerComponent().setModel(new JSONModel({}), "matchModel");
                 var taxModel = this.getOwnerComponent().setModel(new JSONModel([{ ZZ_DATA_DA: this.sYear + '-01-01', ZZ_DATA_A: this.sYear + '-08-31', ZZ_TASSO: 2 }, { ZZ_DATA_DA: this.sYear + '-09-01', ZZ_DATA_A: this.sYear + '-12-31', ZZ_TASSO: 3 }]), "taxModel");
             },
+            checkMandatory(obj) {
+                var stringa = this.getText("erInit") + "\n";
+                var check = false;
+
+                if (!obj.BUKRS || obj.BUKRS === null || obj.BUKRS === undefined || obj.BUKRS === "") {
+                    check = true;
+                    stringa += this.getText("BUKRS") + "\n";
+                }
+
+                if (!obj.KUNNR || obj.KUNNR === null || obj.KUNNR === undefined || obj.KUNNR === "") {
+                    check = true;
+                    stringa += this.getText("KUNNR") + "\n";
+                }
+
+                if (obj.ZZ_DATA_DA === null || obj.ZZ_DATA_DA === undefined || obj.ZZ_DATA_DA === "") {
+                    check = true;
+                    stringa += this.getText("ZZ_DATA_DA") + "\n";
+                }
+
+                if (obj.ZZ_DATA_A === null || obj.ZZ_DATA_A === undefined || obj.ZZ_DATA_A === "") {
+                    check = true;
+                    stringa += this.getText("ZZ_DATA_A") + "\n";
+                }
+                
+                if (check) {
+                    MessageBox.error(stringa, {
+                        actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                        emphasizedAction: MessageBox.Action.OK,
+                        onClose: function (sAction) {
+                            if (sAction === "OK") {
+                                return true;
+                            } else {
+                                return true;
+                            }
+                        }
+                    });
+                    return true;
+                }
+            },
             differenceDays: function (date1, date2) {
                 let time = Math.round(new Date(date2) - new Date(date1))
                 let diffDays = Math.ceil(time / (1000 * 60 * 60 * 24))
                 return diffDays;
-                //let finalAmount = (obj.amount * obj.tassoInteresse * diffDays / 100) / 365;
             },
             subtractDays: function (numOfDays, date = new Date()) {
                 const dateCopy = new Date(date.getTime());

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: it.orogel.calcinteressisoci
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4HANA
+          url: http://orogeldev:44333
+        app:
+          name: ZINTERESTSOCI
+          description: Calcolo Interesi Soci
+          package: Z001
+          transport: SODK900781
